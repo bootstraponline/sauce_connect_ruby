@@ -12,7 +12,10 @@ def sauce?
   (!!sauce_user) && (!!sauce_key)
 end
 
+Sauce.webdriver_method = lambda { |*args| ::Watir::Browser.new *args }
+
 Sauce.config do |config|
+  config[:start_local_application]    = false
   config[:start_tunnel]               = sauce?
   config[:sauce_connect_4_executable] = File.expand_path('../../sc-4.3.8-osx/bin/sc', __FILE__)
   config[:browsers]                   = [

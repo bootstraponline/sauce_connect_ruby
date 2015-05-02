@@ -18,14 +18,13 @@ RSpec.configure do |config|
   config.before(:each) do
 
     if sauce?
-      @driver = Watir::Browser.new :remote,
-                                   url: "http://#{sauce_user}:#{sauce_key}@ondemand.saucelabs.com:80/wd/hub"
+      # binding.pry
+      @driver = @selenium.driver
     else # run locally
       @driver = Watir::Browser.new :firefox
     end
 
-
-    define_page_methods page_module: Page, target_class: self
+    define_page_methods page_module: Page, target_class: self, driver: @driver
   end
 
   config.after(:each) { @driver.quit rescue nil }
