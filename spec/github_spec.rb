@@ -5,8 +5,7 @@ describe 'Sauce connect' do
     github_page.goto
   end
 
-  # it 'successfully loads github twice', sauce: sauce? do
-  #   github_page.goto
-  # end
-
+  it 'successfully loads github twice', sauce: sauce? do
+     github_page.goto
+  end
 end
