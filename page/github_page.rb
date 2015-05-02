@@ -1,5 +1,5 @@
 module Page
-  class GitHubPage
+  class GithubPage
     include PageObject
 
     page_url 'https://www.github.com/'
