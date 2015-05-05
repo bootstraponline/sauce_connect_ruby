@@ -4,6 +4,9 @@ require 'rubygems'
 
 silence_gem_warnings
 
+require 'yarjuf'
+require 'sauce'
+
 require 'watir-webdriver'
 require 'page-object'
 
