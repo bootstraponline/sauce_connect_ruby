@@ -25,7 +25,7 @@ Sauce.config do |config|
   sauce_connect_4 = File.expand_path('../sauce_connect/sc-4.3.8-osx/bin/sc', __FILE__)
 
   puts "tunnel? #{start_tunnel}"
-  puts "sauce? #{sauce?}"
+  puts " sauce? #{sauce?}"
 
   config[:start_local_application]    = false
   config[:start_tunnel]               = start_tunnel

@@ -7,7 +7,7 @@ def silence_gem_warnings
 end
 
 def require_all_pages
-  Dir.glob(File.join(__dir__, '../page/**/*.rb')) { |file| require_relative file }
+  Dir.glob(File.join(__dir__, '../../page/**/*.rb')) { |file| require_relative file }
 end
 
 def define_page_methods opts={}

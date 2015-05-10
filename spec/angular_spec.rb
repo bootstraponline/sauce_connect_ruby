@@ -6,6 +6,6 @@ describe 'Sauce connect' do
   end
 
   it 'successfully loads angularjs.org twice', sauce: sauce? do
-     angular_page.visit
+    angular_page.visit
   end
 end
