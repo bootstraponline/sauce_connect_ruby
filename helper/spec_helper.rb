@@ -4,20 +4,12 @@ require 'rubygems'
 
 silence_gem_warnings
 
-require 'yarjuf' # rspec_junit
-require 'sauce' # sauce_ruby
-
-require 'watir-webdriver'
-require 'page-object'
+require 'angular_automation'
 
 require_all_pages
 
-require 'rspec'
-require 'pry' # for debugging
-
 require_relative 'sauce_helper'
-
-require_relative 'stub/github_page_stub'
+require_relative 'stub/angular_page_stub'
 
 RSpec.configure do |config|
   config.before(:each) do
