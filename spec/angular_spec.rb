@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative '../helper/spec_helper'
 
 describe 'Sauce connect' do
   it 'successfully loads angularjs.org once', sauce: sauce? do
