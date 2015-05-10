@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    angular_automation (0.0.7)
+    angular_automation (0.0.8)
       angular_page_object (>= 0.0.2)
       page_object_stubs (>= 0.0.3)
       pry (>= 0.10.1)
@@ -11,6 +11,7 @@ GEM
       sauce-connect (>= 3.6.0)
       sauce_ruby (>= 3.5.6)
       trace_files (>= 0.0.2)
+      webdriver_utils (>= 0.0.1)
     angular_page_object (0.0.2)
       angular_webdriver (>= 0.0.6)
       page-object (~> 1.1.0)
@@ -136,6 +137,7 @@ GEM
     unf_ext (0.0.7.1)
     watir-webdriver (0.7.0)
       selenium-webdriver (>= 2.45)
+    webdriver_utils (0.0.1)
     websocket (1.2.2)
     xml-simple (1.1.5)
     yml_reader (0.5)
@@ -144,4 +146,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angular_automation (>= 0.0.7)
+  angular_automation (>= 0.0.8)
