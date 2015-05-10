@@ -1,11 +1,11 @@
-require_relative '../util/util'
+require_relative 'util/util'
 
 require 'rubygems'
 
 silence_gem_warnings
 
-require 'yarjuf'
-require 'sauce'
+require 'yarjuf' # rspec_junit
+require 'sauce' # sauce_ruby
 
 require 'watir-webdriver'
 require 'page-object'
@@ -16,6 +16,8 @@ require 'rspec'
 require 'pry' # for debugging
 
 require_relative 'sauce_helper'
+
+require_relative 'stub/github_page_stub'
 
 RSpec.configure do |config|
   config.before(:each) do

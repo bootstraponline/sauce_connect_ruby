@@ -7,3 +7,9 @@ export SAUCE_USERNAME="..."
 export SAUCE_ACCESS_KEY="..."
 rake sauce:spec
 ```
+
+Update stubs:
+
+```
+rake stubs
+```
