@@ -24,7 +24,7 @@ rake stubs
 
 #### test output
 
-local run:
+local run without sauce:
 
 ```
 $ bundle exec rspec
@@ -36,5 +36,21 @@ Sauce connect
   successfully loads angularjs.org twice
 
 Finished in 15.11 seconds (files took 1.79 seconds to load)
+2 examples, 0 failures
+```
+
+local run with sauce:
+
+```
+$ bundle exec rspec
+tunnel? true
+ sauce? true
+
+Sauce connect
+[Sauce Connect is connecting to Sauce Labs...]
+  successfully loads angularjs.org once
+  successfully loads angularjs.org twice
+
+Finished in 1 minute 16.48 seconds (files took 1.7 seconds to load)
 2 examples, 0 failures
 ```
