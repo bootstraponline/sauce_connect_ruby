@@ -54,3 +54,32 @@ Sauce connect
 Finished in 1 minute 16.48 seconds (files took 1.7 seconds to load)
 2 examples, 0 failures
 ```
+
+local run with sauce in parallel:
+
+```
+$ bundle exec rake sauce:spec
+tunnel? true
+ sauce? true
+1 processes for 1 specs, ~ 1 specs per process
+tunnel? true
+ sauce? true
+Run options: include {:sauce=>true}
+
+Randomized with seed 38760
+
+Sauce connect
+[Sauce Connect is connecting to Sauce Labs...]
+  successfully loads angularjs.org twice
+  successfully loads angularjs.org once
+
+Finished in 1 minute 3.06 seconds (files took 1.53 seconds to load)
+2 examples, 0 failures
+
+Randomized with seed 38760
+
+
+2 examples, 0 failures
+
+Took 66 seconds (1:06)
+```

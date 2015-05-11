@@ -1,3 +1,7 @@
+# sauce gem requires this file directly so we need
+# the sauce? and jenkins? methods to be available
+require 'webdriver_utils'
+
 Sauce.webdriver_method = lambda { |*args| ::Watir::Browser.new *args }
 
 Sauce.config do |config|
