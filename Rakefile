@@ -7,7 +7,7 @@ require 'page_object_stubs'
 # ensure junit folder exists (used by sauce:spec parallel runs)
 # junit folder is defined in .rspec_parallel
 junit = 'junit'
-Dir.mkdir junit unless Dir.exist?('junit')
+Dir.mkdir junit unless Dir.exist?(junit)
 
 # rake stubs
 PageObjectStubs.add_stubs_task
