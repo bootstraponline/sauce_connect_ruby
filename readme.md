@@ -21,3 +21,20 @@ Update stubs:
 ```
 rake stubs
 ```
+
+#### test output
+
+local run:
+
+```
+$ bundle exec rspec
+tunnel? false
+ sauce? false
+
+Sauce connect
+  successfully loads angularjs.org once
+  successfully loads angularjs.org twice
+
+Finished in 15.11 seconds (files took 1.79 seconds to load)
+2 examples, 0 failures
+```
