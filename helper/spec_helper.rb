@@ -16,6 +16,13 @@ RSpec.configure do |config|
       @driver = Watir::Browser.new :firefox
     end
 
+    # set window size
+    @driver.driver.manage.window.resize_to 1024, 768
+
+    # set script timeout (used by protractor script in angular_page_object)
+    # https://github.com/angular/protractor/issues/117
+    @driver.driver.manage.timeouts.script_timeout = 60 # seconds
+
     WebDriverUtils.define_page_methods page_module: Page, target_class: self, driver: @driver
   end
 
