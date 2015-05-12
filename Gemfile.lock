@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    angular_automation (0.0.10)
+    angular_automation (0.0.11)
       angular_page_object (>= 0.0.2)
       page_object_stubs (>= 0.0.3)
       pry (>= 0.10.1)
@@ -9,7 +9,7 @@ GEM
       rspec_flake (>= 0.2.2)
       rspec_junit (>= 2.0.1)
       sauce-connect (>= 3.6.0)
-      sauce_ruby (>= 3.5.7)
+      sauce_ruby (>= 3.5.8)
       trace_files (>= 0.0.2)
       webdriver_utils (>= 0.0.2)
     angular_page_object (0.0.2)
@@ -110,7 +110,7 @@ GEM
       selenium-webdriver (>= 0.1.2)
     sauce-connect (3.6.0)
       sauce (~> 3.5)
-    sauce_ruby (3.5.7)
+    sauce_ruby (3.5.8)
       childprocess (>= 0.1.6)
       cmdparse (>= 2.0.2)
       highline (>= 1.5.0)
@@ -146,4 +146,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angular_automation (>= 0.0.10)
+  angular_automation (>= 0.0.11)
