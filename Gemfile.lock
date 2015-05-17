@@ -149,5 +149,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angular_automation (>= 0.0.12)
+  angular_automation (>= 0.0.14)
   thor (~> 0.19.1)
