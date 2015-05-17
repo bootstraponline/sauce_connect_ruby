@@ -8,10 +8,16 @@ require_relative 'sauce_helper'
 # Require stubs for RubyMine auto completion
 require_relative 'stub/angular_page_stub'
 
+def travis?
+  ENV['TRAVIS_BUILD_ID']
+end
+
 RSpec.configure do |config|
   config.before(:each) do
     if sauce?
       @driver = @selenium.driver # sauce_helper sets the driver to Watir
+    elsif travis?
+      @driver = Watir::Browser.new :remote, desired_capabilities: Selenium::WebDriver::Remote::Capabilities.firefox
     else # run locally
       @driver = Watir::Browser.new :firefox
     end
