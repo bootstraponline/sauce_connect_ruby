@@ -1,4 +1,4 @@
-# sauce connect ruby
+# sauce connect ruby [![Build Status](https://travis-ci.org/bootstraponline/sauce_connect_ruby.svg?branch=master)](https://travis-ci.org/bootstraponline/sauce_connect_ruby)
 
 Run tests locally (make sure sauce env vars are not defined):
 
