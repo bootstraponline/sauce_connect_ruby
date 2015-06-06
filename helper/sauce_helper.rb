@@ -19,6 +19,6 @@ Sauce.config do |config|
 
   # https://saucelabs.com/platforms/
   config[:browsers]                   = [
-    ['Windows 8', 'Firefox', 37]
+    Platform.windows_8.firefox.v37
   ]
 end
