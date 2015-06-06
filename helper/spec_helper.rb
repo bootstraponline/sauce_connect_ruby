@@ -4,6 +4,7 @@ require 'angular_automation'
 WebDriverUtils.require_all_pages
 
 require_relative 'sauce_helper'
+require_relative 'trace'
 
 # Require stubs for RubyMine auto completion
 require_relative 'stub/angular_page_stub'
