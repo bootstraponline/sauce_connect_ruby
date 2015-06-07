@@ -55,8 +55,7 @@ RSpec.configure do |config|
     # set window size
     driver.manage.window.resize_to 1024, 768
 
-    # Note that since we're using watir, the driver must be set to watir.
-    WebDriverUtils.define_page_methods page_module: Page, target_class: self, driver: watir
+    WebDriverUtils.define_page_methods page_module: Page, target_class: self, watir: watir
   end
 
   config.after(:each) { @watir.quit rescue nil }
