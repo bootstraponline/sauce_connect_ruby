@@ -15,6 +15,10 @@ RSpec.configure do |config|
     @driver
   end
 
+  def watir
+    @watir
+  end
+
   config.before(:each) do
     if sauce?
       @watir = @selenium.driver # sauce_helper sets the driver to Watir
@@ -22,8 +26,8 @@ RSpec.configure do |config|
       @watir = Watir::Browser.new :firefox
     end
 
-    @driver = @watir.driver
-    @protractor = Protractor.new watir: @watir # driver is watir
+    @driver = watir.driver
+    @protractor = Protractor.new watir: watir
 
     # Must call after Protractor.new and not before.
     # Enables use of element and by within rspec tests.
@@ -35,7 +39,10 @@ RSpec.configure do |config|
     driver.manage.timeouts.script_timeout = _60_seconds
     # some browsers are slow to load.
     # https://github.com/angular/protractor/blob/6ebc4c3f8b557a56e53e0a1622d1b44b59f5bc04/spec/ciSmokeConf.js#L73
-    driver.manage.timeouts.page_load      = _60_seconds
+    #
+    # Safari does not implement the page load timeout. Invoking it will cause
+    # Unknown command: setTimeout
+    driver.manage.timeouts.page_load      = _60_seconds unless driver.browser == :safari
     driver.manage.timeouts.implicit_wait  = 0
 
     # sometimes elements just don't exist even though the page has loaded
@@ -43,16 +50,13 @@ RSpec.configure do |config|
     #
     # implicit wait shouldn't ever be used. client wait is a reliable replacement.
     driver.set_max_wait 10 # seconds
+    driver.set_max_page_wait 30 # seconds
 
     # set window size
     driver.manage.window.resize_to 1024, 768
 
-    # set script timeout (used by protractor script in angular_page_object)
-    # https://github.com/angular/protractor/issues/117
-    driver.manage.timeouts.script_timeout = 60 # seconds
-
     # Note that since we're using watir, the driver must be set to watir.
-    WebDriverUtils.define_page_methods page_module: Page, target_class: self, driver: @watir
+    WebDriverUtils.define_page_methods page_module: Page, target_class: self, driver: watir
   end
 
   config.after(:each) { @watir.quit rescue nil }
