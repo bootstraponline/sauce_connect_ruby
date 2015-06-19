@@ -9,8 +9,6 @@ require 'sauce_platforms'
 Sauce.webdriver_method = lambda { |*args| ::Watir::Browser.new *args }
 
 Sauce.config do |config|
-  config.include AngularWebdriver::RSpecHelpers
-
   # Only tunnel if we're running locally on Sauce.
   # Sauce on Jenkins will use the Sauce OnDemand plugin to tunnel
   start_tunnel    = sauce? && !jenkins?
