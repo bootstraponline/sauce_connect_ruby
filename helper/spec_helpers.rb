@@ -1,11 +1,7 @@
-require 'singleton'
-
 class SpecHelpers
-  include Singleton
-
   attr_reader :browser, :protractor, :driver
 
-  def initialize
+  def initialize sauce_driver
     browser_name = :firefox # default
 
     # @browser = Watir::Browser.new browser_name
@@ -15,18 +11,20 @@ class SpecHelpers
     # @browser = Watir::Browser.new browser_name
 
     # Remote driver is useful for debugging
-    begin
-      if sauce?
-        @browser = @selenium.driver # sauce_helper sets the driver to Watir
-      else
+
+    if sauce_driver
+      @browser = sauce_driver.driver # sauce_helper sets the driver to Watir
+    else
+      begin
         @browser = Watir::Browser.new :remote, desired_capabilities: Selenium::WebDriver::Remote::Capabilities.send(browser_name)
+      rescue # assume local browser if the remote doesn't connect
+        # often the tests are running locally using a remote which fails on
+        # travis since travis isn't setup for a remote browser.
+        @browser = Watir::Browser.new browser_name
       end
-    rescue # assume local browser if the remote doesn't connect
-      # often the tests are running locally using a remote which fails on
-      # travis since travis isn't setup for a remote browser.
-      @browser = Watir::Browser.new browser_name
     end
 
+    raise 'Browser is nil' unless browser
     @driver = browser.driver
     raise 'Driver is nil!' unless driver
 
@@ -48,6 +46,12 @@ class SpecHelpers
           helper_instance.send(method_symbol, *args, &block)
       end
     end
+
+    # override stub methods
+    WebDriverUtils.define_page_methods page_module:  ::Page,
+                                       target_class: TOPLEVEL_BINDING.eval('self'),
+                                       method:       :define_method,
+                                       watir:        browser
 
     # set script timeout for protractor client side javascript
     # https://github.com/angular/protractor/issues/117

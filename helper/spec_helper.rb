@@ -11,12 +11,16 @@ require_relative 'trace_helper'
 require_relative 'expect_helper'
 require_relative 'spec_helpers'
 
-spec_helpers = SpecHelpers.instance
+RSpec.configure do |config|
 
-# override stub methods
-WebDriverUtils.define_page_methods page_module: ::Page,
-                                   target_class: TOPLEVEL_BINDING.eval('self'),
-                                   method: :define_method,
-                                   watir: spec_helpers.browser
+  # sauce gem injects selenium instance at the before each rspec level
+  # we can't use a singleton driver since the driver is created/destroyed
+  # for every test
+  config.before(:each) do
+    @spec_helpers = SpecHelpers.new(@selenium)
+  end
 
-at_exit { spec_helpers.driver_quit rescue nil }
+  config.after(:each) do
+    @spec_helpers.driver_quit
+  end
+end
