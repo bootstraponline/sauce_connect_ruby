@@ -49,7 +49,7 @@ class SpecHelpers
 
     # override stub methods
     WebDriverUtils.define_page_methods page_module:  ::Page,
-                                       target_class: TOPLEVEL_BINDING.eval('self'),
+                                       target_class: context,
                                        method:       :define_method,
                                        watir:        browser
 

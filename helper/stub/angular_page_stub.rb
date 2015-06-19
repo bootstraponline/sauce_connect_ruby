@@ -9,8 +9,12 @@ module Stub
   end
 end
 
-public
-
-def angular_page
-  Stub::AngularPage
+module RSpec
+  module Core
+    class ExampleGroup
+      def angular_page
+        Stub::AngularPage
+      end
+    end
+  end
 end
