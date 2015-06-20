@@ -48,7 +48,7 @@ class SpecHelpers
     end
 
     # override stub methods
-    WebDriverUtils.define_page_methods page_module:  ::Page,
+    AngularWebdriver.define_page_methods page_module:  ::Page,
                                        target_class: context,
                                        method:       :define_method,
                                        watir:        browser

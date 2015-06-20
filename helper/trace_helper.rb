@@ -7,7 +7,7 @@ if trace
   gem_dir                = File.join(`rvm gemdir`.strip, 'gems') # "/Users/user/.rvm/gems/ruby-2.2.2/gems"
   selenium_webdriver_gem = File.expand_path File.join(gem_dir, 'selenium-webdriver-2.45.0', 'lib', '**', '*.rb')
   watir_webdriver_gem    = File.expand_path File.join(gem_dir, 'watir-webdriver-0.7.0', 'lib', '**', '*.rb')
-  page_object_gem        = File.expand_path File.join(gem_dir, 'page-object-1.1.0', 'lib', '**', '*.rb')
+  page_object_gem        = File.expand_path File.join(gem_dir, 'page_object-1.1.3', 'lib', '**', '*.rb')
 
 
   targets = []

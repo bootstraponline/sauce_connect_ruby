@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'angular_automation'
 
-WebDriverUtils.require_all_pages
+AngularWebdriver.require_all_pages
 
 # Require stubs for RubyMine auto completion
 require_relative 'stub/angular_page_stub'
