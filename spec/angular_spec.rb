@@ -12,7 +12,7 @@ describe 'Sauce connect' do
   end
 
   it 'finds by custom protractor locator' do
-    skip 'requires protractor test app to be running on localhost'
+    # Requires protractor test app to be running on localhost
     local_page.goto
     element(by.binding('greet')).present? # protractor locator can be used directly
     local_page.greet_button?              # or inside a page object via block
