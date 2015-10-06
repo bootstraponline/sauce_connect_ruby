@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'angular_automation'
+require 'sauce'
 
 AngularWebdriver.require_all_pages
 
