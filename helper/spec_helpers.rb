@@ -1,7 +1,7 @@
 class SpecHelpers
   attr_reader :browser, :protractor, :driver
 
-  def initialize sauce_driver
+  def initialize sauce_driver=nil
     browser_name = :firefox # default
 
     # @browser = Watir::Browser.new browser_name

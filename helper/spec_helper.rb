@@ -29,21 +29,25 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    http_client         = ::Selenium::WebDriver::Remote::Http::Curb.new
-    http_client.timeout = 5 * 60 # seconds
-    caps                = example_caps
+    if SauceRSpec.config.sauce?
+      http_client         = ::Selenium::WebDriver::Remote::Http::Curb.new
+      http_client.timeout = 5 * 60 # seconds
+      caps                = example_caps
 
-    # Retry failed session initialization up to a max wait of 5 minutes.
-    watir_browser       = wait(5 * 60) do
-      ::Watir::Browser.new :remote,
-                           url:                  SauceRSpec.config.url,
-                           desired_capabilities: caps,
-                           http_client:          http_client
+      # Retry failed session initialization up to a max wait of 5 minutes.
+      watir_browser       = wait(5 * 60) do
+        ::Watir::Browser.new :remote,
+                             url:                  SauceRSpec.config.url,
+                             desired_capabilities: caps,
+                             http_client:          http_client
+      end
+
+      http_client.timeout = 1.5 * 60 # seconds
+      SauceRSpec.driver   = watir_browser.driver
+      @spec_helpers       = SpecHelpers.new(watir_browser)
+    else
+      @spec_helpers = SpecHelpers.new
     end
-
-    http_client.timeout = 1.5 * 60 # seconds
-    SauceRSpec.driver   = watir_browser.driver
-    @spec_helpers       = SpecHelpers.new(watir_browser)
   end
 
   config.after(:each) do
