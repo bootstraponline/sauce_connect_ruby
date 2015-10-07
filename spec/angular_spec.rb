@@ -1,21 +1,13 @@
 require_relative '../helper/spec_helper'
 
-describe 'Sauce connect' do
-  it 'successfully loads angularjs.org once', sauce: sauce? do
+describe 'Sauce' do
+  it 'successfully loads angularjs.org once' do
     angular_page.goto
     expect_true angular_page.download_button.include?('Download')
   end
 
-  it 'successfully loads angularjs.org twice', sauce: sauce? do
+  it 'successfully loads angularjs.org twice' do
     angular_page.goto
     expect_true angular_page.download_button.include?('Download')
-  end
-
-  it 'finds by custom protractor locator' do
-    # Requires protractor test app to be running on localhost
-    local_page.goto
-    element(by.binding('greet')).present? # protractor locator can be used directly
-    local_page.greet_button?              # or inside a page object via block
-    local_page.greet_button2?             # or inside a page object via symbol
   end
 end

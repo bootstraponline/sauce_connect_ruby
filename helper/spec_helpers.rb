@@ -13,7 +13,7 @@ class SpecHelpers
     # Remote driver is useful for debugging
 
     if sauce_driver
-      @browser = sauce_driver.driver # sauce_helper sets the driver to Watir
+      @browser = sauce_driver # sauce_driver is a Watir instance
     else
       begin
         @browser = Watir::Browser.new :remote, desired_capabilities: Selenium::WebDriver::Remote::Capabilities.send(browser_name)
