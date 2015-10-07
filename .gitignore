@@ -1,3 +1,4 @@
 *.xml
 junit/
 
+.test_queue_stats
