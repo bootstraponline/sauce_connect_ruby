@@ -103,7 +103,7 @@ GEM
     sauce_connect (3.6.1)
       sauce_ruby (>= 3.5)
     sauce_platforms (2.0.0)
-    sauce_rspec (1.0.0)
+    sauce_rspec (1.0.1)
       curb (~> 0.8.8)
       rspec (~> 3.3.0)
       test-queue-split (~> 0.3.2)
@@ -148,7 +148,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular_automation (>= 1.0.10)
-  sauce_rspec (~> 1.0.0)
+  sauce_rspec (~> 1.0.1)
   thor (~> 0.19.1)
 
 BUNDLED WITH
