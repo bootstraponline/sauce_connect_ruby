@@ -1,8 +1,11 @@
 require 'rubygems'
+require_relative 'trace_helper'
+
 require 'angular_automation'
 require 'sauce_rspec'
 require 'sauce_rspec/rspec'
-require 'selenium/webdriver/remote/http/curb'
+# require 'selenium/webdriver/remote/http/curb' # segfalts
+require 'selenium/webdriver/remote/http/persistent'
 
 AngularWebdriver.require_all_pages
 
@@ -10,14 +13,13 @@ AngularWebdriver.require_all_pages
 require_relative 'stub/angular_page_stub'
 
 require_relative 'sauce_helper'
-require_relative 'trace_helper'
 require_relative 'expect_helper'
 require_relative 'spec_helpers'
 
 RSpec.configure do |config|
   config.before(:each) do
     if SauceRSpec.config.sauce?
-      http_client         = ::Selenium::WebDriver::Remote::Http::Curb.new
+      http_client         = ::Selenium::WebDriver::Remote::Http::Persistent.new
       http_client.timeout = 5 * 60 # seconds
       caps                = SauceRSpec.update_example_caps
 
