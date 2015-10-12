@@ -14,6 +14,7 @@ bundle exec rspec
 Run tests on sauce in parallel:
 
 ```
+export TEST_QUEUE_SPLIT_GROUPS=true
 export TEST_QUEUE_VERBOSE=true
 export SAUCE_USERNAME="..."
 export SAUCE_ACCESS_KEY="..."
