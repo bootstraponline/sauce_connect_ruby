@@ -30,3 +30,21 @@ Update stubs:
 ```
 rake stubs
 ```
+
+### rspec-queue --format
+
+```bash
+export TEST_QUEUE_VERBOSE=true
+
+# Prints JSON for all processes to stdout
+rspec-queue --format json spec/
+
+# Prints JSON for all processes to out.txt
+rspec-queue --format json --out out.txt spec/
+
+# Prints JUnit XML for all processes to stdout
+rspec-queue --require rspec_junit --format JUnit spec/
+
+# Prints JUnit XML for all processes to junit.xml
+rspec-queue --require rspec_junit --format JUnit --out junit.xml spec/
+```
