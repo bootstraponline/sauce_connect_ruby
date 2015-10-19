@@ -98,7 +98,7 @@ GEM
       nokogiri (~> 1.6.5)
       posix-spawn (~> 0.3.9)
       xml-simple (~> 1.1.4)
-    rspec_junit (4.0.1)
+    rspec_junit (4.0.2)
       builder (>= 3.2.2)
       rspec (>= 3.3.0)
     rubyzip (1.1.7)
