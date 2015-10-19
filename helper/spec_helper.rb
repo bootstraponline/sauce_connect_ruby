@@ -22,6 +22,11 @@ require_relative 'expect_helper'
 require_relative 'spec_helpers'
 
 RSpec.configure do |config|
+  # Set default formatter because RSpec doesn't know we're setting the
+  # formatters in suite and will default to progress which will duplicate
+  # the failures that are printed to stdout.
+  config.default_formatter = SauceDocumentation
+
   config.before(:suite) do
     # Must register the formatter here and not in an options file. The options
     # file uses the master process pid and globs all the xml files into one
