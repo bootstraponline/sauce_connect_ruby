@@ -2,8 +2,13 @@ require 'rubygems'
 require_relative 'trace_helper'
 
 require 'angular_automation'
+
+require 'sauce_documentation'
+require 'rspec_junit'
+
 require 'sauce_rspec'
 require 'sauce_rspec/rspec'
+
 # require 'selenium/webdriver/remote/http/curb' # segfalts
 require 'selenium/webdriver/remote/http/persistent'
 
@@ -17,6 +22,17 @@ require_relative 'expect_helper'
 require_relative 'spec_helpers'
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    # Must register the formatter here and not in an options file. The options
+    # file uses the master process pid and globs all the xml files into one
+    # instead of the worker pids which output to individual files.
+    junit_path = File.expand_path(File.join(__dir__, '..', 'junit'))
+    junit_xml  = File.join(junit_path, "junit_#{Process.pid}.xml")
+
+    config.add_formatter RSpecJUnit, junit_xml
+    config.add_formatter SauceDocumentation
+  end
+
   config.before(:each) do
     if SauceRSpec.config.sauce?
       http_client         = ::Selenium::WebDriver::Remote::Http::Persistent.new

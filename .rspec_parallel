@@ -1,8 +1,0 @@
---require ./helper/spec_helper
---order random
---backtrace
---format documentation
---format JUnit
---out ./junit/xml_<%= ENV['TEST_ENV_NUMBER'] %>.xml
---format ParallelTests::RSpec::SummaryLogger
---out ./junit/parallel_summary.txt
