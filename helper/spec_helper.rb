@@ -1,18 +1,27 @@
 require 'rubygems'
 require_relative 'trace_helper'
 
-require 'angular_automation'
+require 'rspec_flake'
+require 'rspec_junit'
+require 'page-object'
+require 'page_object_stubs'
+require 'trace_files'
+require 'sauce_platforms'
+require 'webdriver_utils'
+require 'rspec'
+require 'pry'
 
 require 'sauce_documentation'
 require 'rspec_junit'
 
 require 'sauce_rspec'
 require 'sauce_rspec/rspec'
+require_relative 'page_helper'
 
 # require 'selenium/webdriver/remote/http/curb' # segfalts
 require 'selenium/webdriver/remote/http/persistent'
 
-AngularWebdriver.require_all_pages
+SauceConnectRuby.require_all_pages
 
 # Require stubs for RubyMine auto completion
 require_relative 'stub/angular_page_stub'

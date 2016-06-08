@@ -1,8 +1,8 @@
 class SpecHelpers
-  attr_reader :browser, :protractor, :driver
+  attr_reader :browser, :driver
 
   def initialize sauce_driver=nil
-    browser_name = :firefox # default
+    browser_name = :chrome # default
 
     # @browser = Watir::Browser.new browser_name
 
@@ -30,6 +30,13 @@ class SpecHelpers
 
     driver.extend Selenium::WebDriver::DriverExtensions::HasTouchScreen
     driver.extend Selenium::WebDriver::DriverExtensions::HasLocation
+
+    # override stub methods
+    context = ::RSpec::Core::ExampleGroup
+    SauceConnectRuby.define_page_methods page_module:  ::Page,
+                                         target_class: context,
+                                         method:       :define_method,
+                                         watir:        browser
 
     # set script timeout for protractor client side javascript
     # https://github.com/angular/protractor/issues/117
