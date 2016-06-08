@@ -1,14 +1,8 @@
-language: node_js
-node_js:
-  - stable
+language: ruby
 sudo: false
 cache:
   bundler: true
-  directories:
-    - protractor/node_modules
 before_install:
-  - rvm install 2.2.2
-  - rvm --default use 2.2.2
   - gem update --remote bundler
 install:
   - bundle install --retry=3
@@ -16,11 +10,6 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ruby -v
-  - cd protractor
-  - npm install
-  - cd testapp
-  - npm start & # must background the webserver
-  - cd ..; cd .. # return to project root
   - sleep 5 # wait for servers to start
 script:
   - bundle exec thor spec
