@@ -18,7 +18,7 @@ export TEST_QUEUE_SPLIT_GROUPS=true
 export TEST_QUEUE_VERBOSE=true
 export SAUCE_USERNAME="..."
 export SAUCE_ACCESS_KEY="..."
-rspec-queue spec/
+bundle exec rspec-queue spec/
 ```
 
 Run tests on sauce serially (sauce env vars must be defined):
