@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.3.1
-sudo: false
+sudo: true
 cache:
   bundler: true
 before_install:
@@ -9,9 +9,14 @@ before_install:
 install:
   - bundle install --retry=3
 before_script:
+  - export DEBIAN_FRONTEND=noninteractive
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
   - ruby -v
   - sleep 5 # wait for servers to start
 script:
